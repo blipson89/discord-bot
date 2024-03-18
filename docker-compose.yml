@@ -2,6 +2,7 @@ services:
   gmbot:
     image: gmbot
     container_name: gmbot
+    restart: 'unless-stopped'
     labels:
       - traefik.enabled=false
     build:

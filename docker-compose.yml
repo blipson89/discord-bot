@@ -1,0 +1,8 @@
+services:
+  gmbot:
+    image: gmbot
+    container_name: gmbot
+    labels:
+      - traefik.enabled=false
+    build:
+      context: .

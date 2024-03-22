@@ -1,7 +1,7 @@
 services:
-  gmbot:
-    image: gmbot
-    container_name: gmbot
+  discordbot:
+    image: discordbot
+    container_name: discordbot
     restart: 'unless-stopped'
     labels:
       - traefik.enabled=false

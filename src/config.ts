@@ -6,6 +6,7 @@ dotenv.config();
 const {
   AI_INSTRUCTIONS,
   ASSISTANT_ID,
+  BOT_NAME,
   CHAT_MODE,
   CHAT_MODEL,
   DISCORD_CLIENT_ID,
@@ -30,6 +31,7 @@ function assertPropertiesDefined(properties: string[]) {
 assertPropertiesDefined([
   'AI_INSTRUCTIONS',
   'ASSISTANT_ID',
+  'BOT_NAME',
   'CHAT_MODE',
   'CHAT_MODEL',
   'DISCORD_CLIENT_ID',
@@ -40,6 +42,7 @@ assertPropertiesDefined([
 export const config = {
   AI_INSTRUCTIONS: AI_INSTRUCTIONS!.replaceAll(' \n', ' ').replaceAll('\n', ' '),
   ASSISTANT_ID: ASSISTANT_ID!,
+  BOT_NAME: BOT_NAME!,
   CHAT_MODE: CHAT_MODE as ChatMode,
   CHAT_MODEL: CHAT_MODEL as 'gpt-3.5-turbo' | 'gpt-4-0125-preview',
   DISCORD_CLIENT_ID: DISCORD_CLIENT_ID!,

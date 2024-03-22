@@ -26,14 +26,14 @@ client.on('messageCreate', async msg => {
   if (msg.author.id === client.application?.id) {
     return;
   }
-  const tagged = msg.mentions.users.has(client.application?.id ?? '') || msg.mentions.roles.some(x => x.name === "GMBot");
+  const tagged = msg.mentions.users.has(client.application?.id ?? '') || msg.mentions.roles.some(x => x.name === config.BOT_NAME);
 
   if (tagged) {
     logChat(msg.author.displayName, msg.cleanContent);
     
     const callback = (message: Message) => {
       const content = message.content[0] as TextContentBlock;
-      logChat('GMBot', content.text.value);
+      logChat(config.BOT_NAME, content.text.value);
       msg.reply(content.text.value);
     };
 

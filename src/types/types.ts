@@ -1,0 +1,1 @@
+type LogLevels = 'debug' | 'info' | 'warning' | 'error';

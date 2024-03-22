@@ -2,6 +2,7 @@ import { Client } from "discord.js";
 import { config } from '@/config';
 import { chatMode, conversationMode } from "@/ai";
 import { ChatMode } from "@/enums";
+import { commands } from "@/commands";
 import { Message, TextContentBlock } from "openai/resources/beta/threads/messages/messages";
 import logger, { logChat } from "@/util/logging";
 
@@ -35,8 +36,19 @@ client.on('messageCreate', async msg => {
       logChat('GMBot', content.text.value);
       msg.reply(content.text.value);
     };
-    
+
     ai.sendMessageWithCallback(msg.cleanContent, msg.author.displayName, callback);
   }
 });
+
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isCommand()) {
+    return;
+  }
+  const { commandName } = interaction;
+  if (commands[commandName as keyof typeof commands]) {
+    commands[commandName as keyof typeof commands].execute(interaction);
+  }
+});
+
 client.login(config.DISCORD_CLIENT_TOKEN);

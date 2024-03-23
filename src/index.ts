@@ -1,7 +1,6 @@
 import { Client } from "discord.js";
 import { config } from '@/config';
 import { chatMode, conversationMode } from "@/ai";
-import { ChatMode } from "@/enums";
 import { commands } from "@/commands";
 import { Message, TextContentBlock } from "openai/resources/beta/threads/messages/messages";
 import logger, { logChat } from "@/util/logging";
@@ -13,9 +12,9 @@ client.once('ready', async() => {
   logger.info(`Logged in as ${client.user?.tag}!`);
   logger.info(`Beginning in ${config.CHAT_MODE} mode using ${config.CHAT_MODEL}.`)
 
-  if (config.CHAT_MODE === ChatMode.Chat) {
+  if (config.CHAT_MODE === 'chat') {
     ai = chatMode();
-  } else if(config.CHAT_MODE === ChatMode.Conversation) {
+  } else if(config.CHAT_MODE === 'conversation') {
     ai = conversationMode();
   } else {
     throw "CHAT_MODE not set in .env"
